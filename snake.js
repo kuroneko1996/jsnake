@@ -1,9 +1,9 @@
 "use strict";
 (function () {
 	class Snake {
-		constructor(game, x = 0, y = 0) {
-			this.x = x;
-			this.y = y;
+		constructor(game, startX = 0, startY = 0) {
+			this.x = this.startX = startX;
+			this.y = this.startY = startY;
 			this.xspeed = 1;
 			this.yspeed = 0;
 			this.total = 0;
@@ -15,10 +15,10 @@
 
 		}
 
-		eat() {
-			let dst = 0;
+		eat(pos) {
+			let dst = this.game.dist(this.x, this.y, pos.x, pos.y);
 			if (dst < 1) {
-				total++;
+				this.total++;
 				return true;
 			} else {
 				return false;
@@ -30,16 +30,23 @@
 			this.yspeed = y;
 		}
 
+		respawn() {
+			this.total = 0;
+			this.tail = [];
+			this.x = this.startX;
+			this.y = this.startY;
+			this.dir(1, 0);
+		}
+
 		death() {
 			for (let i = 0; i < this.tail.length; i++) {
 				let pos = this.tail[i];
-				let dst = 1;
-				/*if (dst < 1) {
+				let dst = this.game.dist(this.x, this.y, pos.x, pos.y);
+				if (dst < 1) {
 					console.log("Game Over");
-					this.total = 0;
-					this.tail = [];
-					break;
-				}*/
+					this.respawn();
+					return;
+				}
 			}
 		}
 
@@ -48,6 +55,8 @@
 				if (this.tail.length > 0 && this.total === this.tail.length) {
 					this.tail.shift();
 				}
+				let x = this.x;
+				let y = this.y;
 				this.tail.push({x, y});
 			}
 
@@ -55,12 +64,14 @@
 			this.y += this.yspeed * this.scl;
 
 			// boundaries checking
-
+			if (this.x < 0 || this.x > this.game.width || this.y < 0 || this.y > this.game.height) {
+				this.respawn();
+			}
 		}
 
 		draw() {
 			for (let i = 0; i < this.tail.length; i++) {
-				drawing.rect(tail[i].x, this.tail[i].y, this.scl, this.scl);
+				this.drawing.rect(this.tail[i].x, this.tail[i].y, this.scl, this.scl);
 			}
 			// head
 			this.drawing.rect(this.x, this.y, this.scl, this.scl);

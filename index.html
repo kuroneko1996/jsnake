@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>Snake Game</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="drawing.js"></script>
-	<script type="text/javascript" src="game.js"></script>
-	<script type="text/javascript" src="snake.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css?3">
+	<script type="text/javascript" src="drawing.js?3"></script>
+	<script type="text/javascript" src="game.js?3"></script>
+	<script type="text/javascript" src="snake.js?3"></script>
 </head>
 <body>
 
@@ -19,12 +19,19 @@
 (function () {
 	var game = new SnakeGame(new window.Drawing('mycanvas'));
 	var snake = new SnakeGame.Snake(game, 100, 100);
+	var food = {x: 0, y: 0};
 
 	game.logic = function () {
+
+		if (snake.eat(food)) {
+			spawnNewFood();
+		}
 
 		snake.death();
 		snake.update();
 		snake.draw();
+
+		drawFood();
 	};
 
 	game.addKeydown(function (event) {
@@ -45,7 +52,25 @@
 		}
 	});
 
+	spawnNewFood();
+
 	game.start();
+
+	function spawnNewFood() {
+		var cols = game.width / game.scl;
+		var rows = game.height / game.scl;
+		food.x = getRandomInt(0, cols) * game.scl;
+		food.y = getRandomInt(0, rows) * game.scl;
+	}
+	function drawFood() {
+		game.drawing.rect(food.x, food.y, game.scl, game.scl, 'green');
+	}
+
+	function getRandomInt(min, max)
+	{
+	  return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
 
 })();
 </script>
