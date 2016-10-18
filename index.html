@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Snake Game</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="drawing.js"></script>
+	<script type="text/javascript" src="game.js"></script>
+	<script type="text/javascript" src="snake.js"></script>
+</head>
+<body>
+
+<canvas id="mycanvas" width="640" height="480">
+	
+</canvas>
+
+
+<script type="text/javascript">
+"use strict";
+(function () {
+	var game = new SnakeGame(new window.Drawing('mycanvas'));
+	var snake = new SnakeGame.Snake(game, 100, 100);
+
+	game.logic = function () {
+
+		snake.death();
+		snake.update();
+		snake.draw();
+	};
+
+	game.addKeydown(function (event) {
+		const UP = 38;
+		const DOWN = 40;
+		const LEFT = 37;
+		const RIGHT = 39;
+
+		var keyCode = event.keyCode;
+		if (keyCode == UP) {
+			snake.dir(0, -1);
+		} else if (keyCode == DOWN) {
+			snake.dir(0, 1);
+		} else if (keyCode == RIGHT) {
+			snake.dir(1, 0);
+		} else if (keyCode == LEFT) {
+			snake.dir(-1, 0);
+		}
+	});
+
+	game.start();
+
+})();
+</script>
+</body>
+</html>
