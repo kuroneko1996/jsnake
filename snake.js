@@ -26,6 +26,9 @@
 		}
 
 		dir(x, y) {
+			if (this.xspeed == -x || this.yspeed == -y) { // prevent moving back
+				return;
+			}
 			this.xspeed = x;
 			this.yspeed = y;
 		}
