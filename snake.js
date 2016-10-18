@@ -38,7 +38,8 @@
 			this.tail = [];
 			this.x = this.startX;
 			this.y = this.startY;
-			this.dir(1, 0);
+			this.xspeed = 1;
+			this.yspeed = 0;
 		}
 
 		death() {
