@@ -26,9 +26,8 @@
 "use strict";
 (function () {
 
-	document.addEventListener('DOMContentLoaded', function() {
-        FastClick.attach(document.body);
-    }, false);
+	var attachFastClick = Origami.fastclick;
+	attachFastClick(document.body);
 
 
 	var game = new SnakeGame(new window.Drawing('mycanvas'));
