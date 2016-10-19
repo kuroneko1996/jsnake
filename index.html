@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Snake Game</title>
+	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="style.css?8">
-	<script type="text/javascript" src="fastclick.js"></script>
 	<script type="text/javascript" src="drawing.js?8"></script>
 	<script type="text/javascript" src="game.js?8"></script>
 	<script type="text/javascript" src="snake.js?8"></script>
@@ -25,10 +25,6 @@
 <script type="text/javascript">
 "use strict";
 (function () {
-
-	var attachFastClick = Origami.fastclick;
-	attachFastClick(document.body);
-
 
 	var game = new SnakeGame(new window.Drawing('mycanvas'));
 	var snake = new SnakeGame.Snake(game, 100, 100);
