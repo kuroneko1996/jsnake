@@ -18,6 +18,22 @@
 		clear() {
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		}
+
+		text(x, y, str) {
+			this.context.fillText(str, x, y);
+		}
+
+		fill(color) {
+			this.context.fillStyle = color;
+		}
+
+		stroke(color) {
+			this.context.strokeStyle = color;
+		}
+
+		font(fnt) {
+			this.context.font = fnt;
+		}
 	}
 	window.Drawing = Draw;
 })();

@@ -13,6 +13,7 @@
 			this.drawing = game.drawing;
 			this.scl = game.scl;
 
+			this.color = '#597dce';
 		}
 
 		eat(pos) {
@@ -40,6 +41,8 @@
 			this.y = this.startY;
 			this.xspeed = 1;
 			this.yspeed = 0;
+
+			this.game.score = 0; // ?
 		}
 
 		death() {
@@ -75,10 +78,10 @@
 
 		draw() {
 			for (let i = 0; i < this.tail.length; i++) {
-				this.drawing.rect(this.tail[i].x, this.tail[i].y, this.scl, this.scl);
+				this.drawing.rect(this.tail[i].x, this.tail[i].y, this.scl, this.scl, this.color);
 			}
 			// head
-			this.drawing.rect(this.x, this.y, this.scl, this.scl);
+			this.drawing.rect(this.x, this.y, this.scl, this.scl, this.color);
 		}
 	}
 

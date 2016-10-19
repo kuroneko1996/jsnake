@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>Snake Game</title>
-	<link rel="stylesheet" type="text/css" href="style.css?6">
-	<script type="text/javascript" src="drawing.js?6"></script>
-	<script type="text/javascript" src="game.js?6"></script>
-	<script type="text/javascript" src="snake.js?6"></script>
+	<link rel="stylesheet" type="text/css" href="style.css?7">
+	<script type="text/javascript" src="drawing.js?7"></script>
+	<script type="text/javascript" src="game.js?7"></script>
+	<script type="text/javascript" src="snake.js?7"></script>
 </head>
 <body>
 
@@ -21,9 +21,13 @@
 	var snake = new SnakeGame.Snake(game, 100, 100);
 	var food = {x: 0, y: 0};
 
+	game.drawing.stroke('#140c1c');
+	game.drawing.font('16px "Lucida Console", Monaco, monospace')
+
 	game.logic = function () {
 
 		if (snake.eat(food)) {
+			game.score += 10;
 			spawnNewFood();
 		}
 
@@ -32,6 +36,7 @@
 		snake.draw();
 
 		drawFood();
+		drawScore();
 	};
 
 	game.addKeydown(function (event) {
@@ -59,16 +64,21 @@
 	function spawnNewFood() {
 		var cols = game.width / game.scl;
 		var rows = game.height / game.scl;
-		food.x = getRandomInt(0, cols) * game.scl;
-		food.y = getRandomInt(0, rows) * game.scl;
+		food.x = getRandomInt(1, cols - 2) * game.scl;
+		food.y = getRandomInt(1, rows - 2) * game.scl;
 	}
 	function drawFood() {
-		game.drawing.rect(food.x, food.y, game.scl, game.scl, 'green');
+		game.drawing.rect(food.x, food.y, game.scl, game.scl, '#d04648');
 	}
 
 	function getRandomInt(min, max)
 	{
 	  return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function drawScore() {
+		game.drawing.fill('#140c1c');
+		game.drawing.text(5, game.height - 5, 'score: ' + game.score);
 	}
 
 
