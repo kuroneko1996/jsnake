@@ -4,6 +4,7 @@
 	<title>Snake Game</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="style.css?11">
+	<script type="text/javascript" src="scaling.js"></script>
 	<script type="text/javascript" src="drawing.js?11"></script>
 	<script type="text/javascript" src="game.js?11"></script>
 	<script type="text/javascript" src="snake.js?11"></script>
@@ -28,12 +29,33 @@
 "use strict";
 (function () {
 
-	var game = new SnakeGame(new window.Drawing('mycanvas'));
-	var snake = new SnakeGame.Snake(game, 100, 100);
+	// size
+	var cellsCount = 32;
+	var paddings = 20;
+
+	if (window.devicePixelRatio !== undefined && window.devicePixelRatio > 1) {
+		var cellSize = Math.floor( (document.documentElement.clientWidth - paddings) / cellsCount);
+	} else {
+		var cellSize = Math.floor( 640 / cellsCount);
+	}
+
+	var width = cellSize * cellsCount;
+	var scl = cellSize;
+
+	document.getElementById('mycanvas').width = width;
+	document.getElementById('mycanvas').height = width;
+
+	var game = new SnakeGame(new window.Drawing('mycanvas'), width, width, scl);
+	var snake = new SnakeGame.Snake(game, 10*scl, 10*scl);
 	var food = {x: 0, y: 0};
 
 	game.drawing.stroke('#140c1c');
-	game.drawing.font('16px "Lucida Console", Monaco, monospace')
+	game.drawing.font(scl * 1.5 + 'px "Lucida Console", Monaco, monospace');
+	
+	game.drawing.context.lineWidth = Math.floor(scl / 7); // ?
+	if (game.drawing.context.lineWidth < 0) {
+		game.drawing.context.lineWidth = 1;
+	}
 
 	game.logic = function () {
 

@@ -1,3 +1,8 @@
+html {
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
 body {
 	background-color: #303030;
 	margin: 0;
@@ -5,7 +10,7 @@ body {
 }
 
 #container {
-	width: 310px;
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 10px;
 	padding: 0;
@@ -17,7 +22,6 @@ body {
 	padding: 0;
     margin: auto;
     display: block;
-    width: 300px;
 }
 
 .control-buttons {

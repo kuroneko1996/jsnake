@@ -3,11 +3,11 @@
 
 	class Game {
 
-		constructor(drawing) {
+		constructor(drawing, width, height, scl) {
 			this.fps = 10;
-			this.scl = 10;
-			this.width = 300;
-			this.height = 300;
+			this.scl = scl;
+			this.width = width;
+			this.height = height;
 			this.score = 0;
 
 			this.drawing = drawing;
