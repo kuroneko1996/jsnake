@@ -1,6 +1,12 @@
 body {
 	background-color: #303030;
 }
+
+#container {
+	width: 720px;
+	margin: 0 auto;
+}
+
 #mycanvas {
 	background-color: #8595a1;
 

@@ -3,24 +3,26 @@
 <head>
 	<title>Snake Game</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="style.css?8">
+	<link rel="stylesheet" type="text/css" href="style.css?9">
 	<script type="text/javascript" src="drawing.js?8"></script>
 	<script type="text/javascript" src="game.js?8"></script>
 	<script type="text/javascript" src="snake.js?8"></script>
 </head>
 <body>
 
-<canvas id="mycanvas" width="640" height="480">
-	
-</canvas>
+<div id="container">
+	<canvas id="mycanvas" width="640" height="480"></canvas>
 
-<div class="control-buttons">
-	<div id="arrow_up"></div>
-	<div class="horizontal-buttons">
-		<div id="arrow_left"></div><div id="arrow_right"></div>
+	<div class="control-buttons">
+		<div id="arrow_up"></div>
+		<div class="horizontal-buttons">
+			<div id="arrow_left"></div><div id="arrow_right"></div>
+		</div>
+		<div id="arrow_down"></div>
 	</div>
-	<div id="arrow_down"></div>
 </div>
+
+
 
 <script type="text/javascript">
 "use strict";
