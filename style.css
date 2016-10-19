@@ -25,36 +25,37 @@ body {
 	border: 0;
 }
 
-.control-buttons .horizontal-buttons {
-	width: 134px;
-	height: 64px;
-	margin: 0 auto;
-}
-
 #arrow_up {
 	background-image: url('./imgs/arrows.png');
 	background-position: 0 0;
 	margin: 0 auto;
-	margin-bottom: 6px;
+	margin-bottom: 30px;
 }
 
 #arrow_down {
 	background-image: url('./imgs/arrows.png');
 	background-position: -64px 0;
 	margin: 0 auto;
-	margin-top: 6px;
+	margin-top: 30px;
 }
+
+.control-buttons .horizontal-buttons {
+	width: 196px;
+	height: 64px;
+	margin: 0 auto;
+}
+
 
 #arrow_left {
 	background-image: url('./imgs/arrows.png');
 	background-position: -128px 0;
-	margin-right: 3px;
+	margin-right: 34px;
 }
 
 #arrow_right {
 	background-image: url('./imgs/arrows.png');
 	background-position: -192px 0;
-	margin-left: 3px;
+	margin-left: 34px;
 }
 
 #arrow_left, #arrow_right {
