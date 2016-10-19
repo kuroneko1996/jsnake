@@ -9,3 +9,55 @@ body {
     display: block;
     width: 640px;
 }
+
+.control-buttons {
+	width: 200px;
+	min-height: 200px;
+	padding: 0;
+	margin: 20px auto;
+}
+
+.control-buttons div {
+	width: 64px;
+	height: 64px;
+	padding: 0;
+	box-sizing: border-box;
+	border: 0;
+}
+
+.control-buttons .horizontal-buttons {
+	width: 134px;
+	height: 64px;
+	margin: 0 auto;
+}
+
+#arrow_up {
+	background-image: url('./imgs/arrows.png');
+	background-position: 0 0;
+	margin: 0 auto;
+	margin-bottom: 6px;
+}
+
+#arrow_down {
+	background-image: url('./imgs/arrows.png');
+	background-position: -64px 0;
+	margin: 0 auto;
+	margin-top: 6px;
+}
+
+#arrow_left {
+	background-image: url('./imgs/arrows.png');
+	background-position: -128px 0;
+	margin-right: 3px;
+}
+
+#arrow_right {
+	background-image: url('./imgs/arrows.png');
+	background-position: -192px 0;
+	margin-left: 3px;
+}
+
+#arrow_left, #arrow_right {
+	padding: 0;
+	display: inline-block;
+}
