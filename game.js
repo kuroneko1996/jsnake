@@ -5,9 +5,9 @@
 
 		constructor(drawing) {
 			this.fps = 10;
-			this.scl = 20;
-			this.width = 640;
-			this.height = 480;
+			this.scl = 10;
+			this.width = 300;
+			this.height = 300;
 			this.score = 0;
 
 			this.drawing = drawing;
