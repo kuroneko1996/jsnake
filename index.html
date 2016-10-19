@@ -25,6 +25,12 @@
 <script type="text/javascript">
 "use strict";
 (function () {
+
+	document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+
+
 	var game = new SnakeGame(new window.Drawing('mycanvas'));
 	var snake = new SnakeGame.Snake(game, 100, 100);
 	var food = {x: 0, y: 0};
