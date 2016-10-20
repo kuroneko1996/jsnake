@@ -32,11 +32,12 @@
 	// size
 	var cellsCount = 32;
 	var paddings = 20;
+	var desktopSize = 640;
 
 	if (window.devicePixelRatio !== undefined && window.devicePixelRatio > 1) {
 		var cellSize = Math.floor( (document.documentElement.clientWidth - paddings) / cellsCount);
 	} else {
-		var cellSize = Math.floor( 640 / cellsCount);
+		var cellSize = Math.floor( desktopSize / cellsCount);
 	}
 
 	var width = cellSize * cellsCount;
@@ -46,7 +47,7 @@
 	document.getElementById('mycanvas').height = width;
 
 	var game = new SnakeGame(new window.Drawing('mycanvas'), width, width, scl);
-	var snake = new SnakeGame.Snake(game, 10*scl, 10*scl);
+	var snake = new SnakeGame.Snake(game, 10 * scl, 10 * scl);
 	var food = {x: 0, y: 0};
 
 	game.drawing.stroke('#140c1c');
@@ -90,24 +91,23 @@
 		}
 	});
 
-	// touch/button controls
-	document.getElementById('arrow_up').addEventListener('click', function (event) {
-		snake.dir(0, -1);
-	});
-	document.getElementById('arrow_down').addEventListener('click', function (event) {
-		snake.dir(0, 1);
-	});
-	document.getElementById('arrow_left').addEventListener('click', function (event) {
-		snake.dir(-1, 0);
-	});
-	document.getElementById('arrow_right').addEventListener('click', function (event) {
-		snake.dir(1, 0);
-	});
-
-
+	assignTouchControls();
 	spawnNewFood();
 
 	game.start();
+
+	// functions
+	function assignTouchControls() {
+		var name2dir = {
+			'arrow_up': [0, -1], 'arrow_down': [0, 1], 'arrow_left': [-1, 0], 'arrow_right': [1, 0]
+		};
+
+		for (let btnName in name2dir) {
+			document.getElementById(btnName).addEventListener('click', function (event) {
+				snake.dir(...name2dir[btnName]);
+			});
+		}
+	}
 
 	function spawnNewFood() {
 		var cols = game.width / game.scl;
@@ -128,7 +128,6 @@
 		game.drawing.fill('#140c1c');
 		game.drawing.text(5, game.height - 5, 'score: ' + game.score);
 	}
-
 
 })();
 </script>
