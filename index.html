@@ -3,11 +3,11 @@
 <head>
 	<title>Snake Game</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="style.css?11">
-	<script type="text/javascript" src="scaling.js"></script>
-	<script type="text/javascript" src="drawing.js?11"></script>
-	<script type="text/javascript" src="game.js?11"></script>
-	<script type="text/javascript" src="snake.js?11"></script>
+	<link rel="stylesheet" type="text/css" href="style.css?12">
+	<script type="text/javascript" src="scaling.js?12"></script>
+	<script type="text/javascript" src="drawing.js?12"></script>
+	<script type="text/javascript" src="game.js?12"></script>
+	<script type="text/javascript" src="snake.js?12"></script>
 </head>
 <body>
 
@@ -15,16 +15,13 @@
 	<canvas id="mycanvas" width="300" height="300"></canvas>
 
 	<div class="control-buttons">
-		<div id="arrow_up"></div>
+		<div id="arrow_up" class="control-button"></div>
 		<div class="horizontal-buttons">
-			<div id="arrow_left"></div><div id="arrow_right"></div>
+			<div id="arrow_left" class="control-button"></div><div id="arrow_right" class="control-button"></div>
 		</div>
-		<div id="arrow_down"></div>
+		<div id="arrow_down" class="control-button"></div>
 	</div>
 </div>
-
-
-
 <script type="text/javascript">
 "use strict";
 (function () {
@@ -43,6 +40,7 @@
 	var width = cellSize * cellsCount;
 	var scl = cellSize;
 
+	// square
 	document.getElementById('mycanvas').width = width;
 	document.getElementById('mycanvas').height = width;
 

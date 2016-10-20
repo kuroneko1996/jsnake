@@ -1,0 +1,32 @@
+/* everything is scaled up by 1.5 */
+.control-buttons {
+	width: 350px !important;
+	min-height: 350px !important;
+}
+
+.control-buttons .control-button {
+	width: 96px !important;
+	height: 96px !important;
+	background-size: 400% auto;
+}
+
+.horizontal-buttons {
+	width: 300px !important;
+	height: 96px !important;
+}
+
+#arrow_left {
+	margin-right: 54px !important;
+}
+
+#arrow_right {
+	margin-left: 54px !important;
+}
+
+#arrow_up {
+	margin-bottom: 15px !important;
+}
+
+#arrow_down {
+	margin-top: 15px !important;
+}
